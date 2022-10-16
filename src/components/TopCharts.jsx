@@ -3,7 +3,7 @@ import Songbar from "./Songbar";
 
 export default function TopCharts({ topcharts }) {
   return (
-    <div className="mx-20">
+    <div className="ml-auto mr-8">
       <div className="">
         <h1 className="text-[#EFEEE0] font-bold text-2xl">Top Charts</h1>
         <div className="">

@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { api } from "./services/Api";
+import playerSlice from "./feature/playerSlice";
 
-// import playerReducer from "./features/playerSlice";
+// Import the playerSlice and the api middleware
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    // player: playerReducer
+    player: playerSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

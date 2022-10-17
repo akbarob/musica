@@ -12,6 +12,7 @@ import Home1 from "../assets/Home-1.svg";
 
 // import { HiUser } from "react-icons/hi";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import { FiSearch } from "react-icons/fi";
 
 import { NavLink } from "react-router-dom";
 {
@@ -24,7 +25,7 @@ const links = [
     to: "/",
     icon: Home,
   },
-  { name: "Library", to: "Musica-Library", icon: Playlist },
+  { name: "Library", to: "ViewChartOrAlbum", icon: Playlist },
   { name: "Radio", to: "Radio", icon: Radio },
   { name: "Video", to: "Video", icon: Videos },
 ];
@@ -34,7 +35,7 @@ const user = [
 ];
 const mobilelinks = [
   { name: "Home", to: "/", icon: Home },
-  { name: "Library", to: "Musica-Library", icon: Playlist },
+  { name: "Library", to: "ViewChartOrAlbum", icon: Playlist },
   { name: "Radio", to: "Radio", icon: Radio },
   { name: "Video", to: "Video", icon: Videos },
   { name: "Profile", to: "#", icon: Profile },
@@ -49,8 +50,8 @@ export default function Sidebar() {
   };
   return (
     <div className="">
-      <div className="hidden md:flex flex-col py-10 px-4 bg-[#1E1E1E] h-screen">
-        <div>
+      <div className=" absolute hidden md:flex flex-col py-10 h-screen z-30 px-4 backdrop-blur-xs pr-5">
+        <div className="justify-center">
           <img src={logo} alt="musica_logo" />
         </div>
         <div className="bg-[#1A1E1F]  rounded-[32px] mt-10 h-[230px] w-[52px] flex flex-col justify-evenly items-center">
@@ -76,15 +77,22 @@ export default function Sidebar() {
           ))}
         </div>
       </div>
+      <FiSearch className="md:hidden text-white/25 w-[20px] h-[20px] absolute top-6 right-6" />
       <div className="absolute md:hidden block top-6 left-3 z-10">
-        <HiOutlineMenuAlt4
-          className="w-6 h-6 text-white mr-2 cursor-pointer"
-          onClick={() => setMobileOpen(!MobileOpen)}
-        />
+        <div className="flex flex-row w-full justify-between">
+          <HiOutlineMenuAlt4
+            className="w-6 h-6 text-white mr-2 cursor-pointer"
+            onClick={() => setMobileOpen(!MobileOpen)}
+          />
+
+          <div className="flex justify-between ml-6">
+            <img src={logo} alt="musica_logo" />
+          </div>
+        </div>
       </div>
       {/* mobileMenu */}
       {MobileOpen ? (
-        <div className="absolute bg-[#1A1E1F] z-50 w-2/3 h-screen pt-6">
+        <div className="absolute md:hidden bg-[#1A1E1F] z-50 w-2/3 h-screen pt-6">
           <HiOutlineMenuAlt4
             className="w-6 h-6 text-white mr-2 cursor-pointer ml-3"
             onClick={() => setMobileOpen(!MobileOpen)}

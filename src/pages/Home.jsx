@@ -26,7 +26,7 @@ export const Home = () => {
   if (isFetching) return <Loader title="Loading Songs Around You" />;
   if (error) return <Error />;
   return (
-    <div className="flex flex-col w-full overflow-y-auto hide-scrollbar">
+    <div className="flex flex-col w-full overflow-y-auto hide-scrollbar pl-20">
       <div className="flex flex-row songs-center w-full">
         <Hero />
         <TopCharts topcharts={topCharts} />

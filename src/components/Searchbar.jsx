@@ -3,7 +3,7 @@ import { FiSearch } from "react-icons/fi";
 
 export default function Searchbar() {
   return (
-    <form className="hidden md:block text-[#FFFFFF]/25 focus-within:text-gray-600 mb-4">
+    <form className=" absolute hidden md:block text-[#FFFFFF]/25 focus-within:text-gray-600 mb-4 z-50 my-4 pl-20">
       <label htmlFor="search" className="sr-only">
         Search all files
       </label>

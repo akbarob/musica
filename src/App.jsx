@@ -5,20 +5,22 @@ import Other from "./pages/Other";
 import Sidebar from "./components/Sidebar";
 import Searchbar from "./components/Searchbar";
 import MusicPlayer from "./components/musicPlayer/index";
+import { ViewChartOrAlbum } from "./pages/ViewChartOrAlbum";
+import Background from "./Lead-image.png";
 
 function App() {
   console.log("akbdmus opemipos");
   return (
-    <div className="flex flex-row h-screen font-quicksand">
+    <div className="flex flex-row h-screen font-quicksand relative">
       <Sidebar />
-      <div className="flex flex-col bg-[#1E1E1E] py-4 px-8 w-full md:w-[calc(100vw-85px)]">
+      <div className="flex flex-col bg-[#1E1E1E] w-full ">
         <Searchbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="other" element={<Other />} />
+          <Route path="ViewChartOrAlbum" element={<ViewChartOrAlbum />} />
         </Routes>
       </div>
-      <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-transparent backdrop-blur-lg z-10">
+      <div className="absolute h-[100px] bottom-0 left-0 right-0 flex animate-slideup bg-transparent backdrop-blur-lg z-50 border-t-2 border-white/20">
         <MusicPlayer />
       </div>
     </div>
@@ -26,3 +28,4 @@ function App() {
 }
 
 export default App;
+// md:w-[calc(100vw-95px)]

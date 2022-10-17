@@ -9,6 +9,8 @@ import Profile from "./profile.svg";
 import Logout from "./Logout.svg";
 import Heart from "./Heart.svg";
 import loader from "./loader.svg";
+import More from "./more-vertical.svg";
+import Add from "./Add-to.svg";
 
 export {
   logo,
@@ -21,4 +23,6 @@ export {
   Logout,
   Heart,
   loader,
+  More,
+  Add,
 };

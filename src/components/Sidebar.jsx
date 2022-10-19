@@ -20,13 +20,10 @@ import { NavLink } from "react-router-dom";
 }
 
 const links = [
-  {
-    name: "Home",
-    to: "/",
-    icon: Home,
-  },
-  { name: "Library", to: "ViewChartOrAlbum", icon: Playlist },
-  { name: "Radio", to: "Radio", icon: Radio },
+  { name: "Home", to: "/", icon: Home },
+
+  { name: "Library", to: "Collections", icon: Playlist },
+  { name: "Radio", to: "ViewChartOrAlbum", icon: Radio },
   { name: "Video", to: "Video", icon: Videos },
 ];
 const user = [
@@ -35,8 +32,8 @@ const user = [
 ];
 const mobilelinks = [
   { name: "Home", to: "/", icon: Home },
-  { name: "Library", to: "ViewChartOrAlbum", icon: Playlist },
-  { name: "Radio", to: "Radio", icon: Radio },
+  { name: "Library", to: "Collections", icon: Playlist },
+  { name: "Radio", to: "ViewChartOrAlbum", icon: Radio },
   { name: "Video", to: "Video", icon: Videos },
   { name: "Profile", to: "#", icon: Profile },
   { name: "Logout", to: "#", icon: Logout },

@@ -15,10 +15,10 @@ export default function SongCard({ song, i, isPlaying, activeSong, data }) {
     dispatch(setActiveSong({ song, data, i }));
   };
   return (
-    <div className="relative rounded-[25px] w-[359px] h-[234px] md:w-[213px] md:h-[234px] justify-center cursor-pointer group overflow-hidden mx-auto mb-[20px]">
+    <div className="relative rounded-[25px] w-[359px] h-[234px] md:w-[213px] md:h-[234px] justify-center cursor-pointer group overflow-hidden mx-auto mb-[20px] ">
       <img
         src={song ? song?.images.coverart : Background}
-        className=" absolute objext-cover w-full h-full mix-blend-normal hover:scale-125 ease-in-out duration-500"
+        className=" absolute objext-cover w-full h-full mix-blend-normal hover:scale-125 ease-in-out duration-500 "
       />
       <div
         className={`absolute  bottom-10 right-2 bg-amber-700 bg-opacity-50 rounded-[25px] hidden group-hover:flex `}

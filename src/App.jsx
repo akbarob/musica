@@ -14,11 +14,13 @@ function App() {
   return (
     <div className="flex flex-row h-screen font-quicksand relative">
       <Sidebar />
-      <div className="flex flex-col bg-[#1E1E1E] w-full ">
+      <div className="flex flex-col bg-[#1E1E1E] w-full pb-24">
         <Searchbar />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="ViewChartOrAlbum" element={<ViewChartOrAlbum />} />
+          <Route path="song/:songid" element={<ViewChartOrAlbum />} />
           <Route path="collections" element={<Collection />} />
         </Routes>
       </div>

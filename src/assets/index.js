@@ -11,6 +11,8 @@ import Heart from "./Heart.svg";
 import loader from "./loader.svg";
 import More from "./more-vertical.svg";
 import Add from "./Add-to.svg";
+import Eric from "./Pexels Photo by Eric Esma.png";
+import Herovec from "./HeroVector.svg";
 
 export {
   logo,
@@ -25,4 +27,6 @@ export {
   loader,
   More,
   Add,
+  Eric,
+  Herovec,
 };

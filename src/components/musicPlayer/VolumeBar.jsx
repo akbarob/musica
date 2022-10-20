@@ -7,7 +7,7 @@ import {
 
 export const VolumeBar = ({ value, min, max, onChange, setVolume }) => {
   return (
-    <div className="hidden md:flex flex-1 items-center justify-end">
+    <div className="hidden lg:flex  items-center justify-end">
       {value <= 1 && value > 0.5 && (
         <BsFillVolumeUpFill
           size={25}
@@ -32,7 +32,7 @@ export const VolumeBar = ({ value, min, max, onChange, setVolume }) => {
         min={min}
         max={max}
         onChange={onChange}
-        className="2xl:w-40 lg:w-32 md:w-32 h-1 ml-2  accent-[#FACD66]"
+        className="2xl:w-40 lg:w-32 md:w-24 h-1 ml-2 accent-[#FACD66]"
       />
     </div>
   );

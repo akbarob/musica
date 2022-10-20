@@ -8,7 +8,7 @@ export const api = createApi({
     prepareHeaders: (headers) => {
       headers.set(
         "X-RapidAPI-Key",
-        "b5320bb55cmshe126bd4110d2619p1e005bjsn5e548279daf3 "
+        "f7286fa7abmshdcfc0e8418ff766p1a4dbfjsn4d8030d3f457"
       );
       return headers;
     },
@@ -17,7 +17,21 @@ export const api = createApi({
     getWorldChart: builder.query({
       query: () => `/charts/world`,
     }),
+    getSongDetails: builder.query({
+      query: (songid) => `/tracks/details?track_id=${songid}`,
+    }),
+    getRelatedSongs: builder.query({
+      query: (songid) => `/tracks/related?track_id=${songid}`,
+    }),
+    getSongsByCountry: builder.query({
+      query: (country) => `/charts/country?country_code=${country}`,
+    }),
   }),
 });
 
-export const { useGetWorldChartQuery } = api;
+export const {
+  useGetWorldChartQuery,
+  useGetSongDetailsQuery,
+  useGetRelatedSongsQuery,
+  useGetSongsByCountryQuery,
+} = api;

@@ -3,7 +3,10 @@ import { FiSearch } from "react-icons/fi";
 
 export default function Searchbar() {
   return (
-    <form className=" absolute hidden md:block text-[#FFFFFF]/25 focus-within:text-gray-600 mb-4 z-50 my-4 pl-20">
+    <form
+      className="bg-[
+      #1D2123] backdrop-blur absolute hidden md:block text-[#FFFFFF]/25 focus-within:text-gray-600 mb-4 z-10 py-4 pl-20 w-full"
+    >
       <label htmlFor="search" className="sr-only">
         Search all files
       </label>
@@ -15,7 +18,7 @@ export default function Searchbar() {
           placeholder="Search Artists & Songs "
           autoComplete="off"
           id="search-field"
-          className="border-none outline-none bg-transparent w-1/3"
+          className="border-none outline-none bg-transparent w-full "
         />
       </div>
     </form>

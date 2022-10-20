@@ -1,6 +1,6 @@
 import React from "react";
 import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
-import { Play, Next, Previous, Shuffle, RepeatOne } from "./assets";
+import { Play, Next, Previous, Shuffle, RepeatOne } from "./assests";
 
 export const Control = ({
   isPlaying,
@@ -18,33 +18,41 @@ export const Control = ({
       <img
         src={Shuffle}
         alt="shuffle"
-        className="hiddem sm:block cursor-pointer"
+        className="hidden md:block cursor-pointer"
+        onClick={() => setShuffle((prev) => !prev)}
       />
       <img
         src={Previous}
         alt="Previous"
-        className="hiddem sm:block cursor-pointer"
+        className=" cursor-pointer"
+        onClick={handlePrevSong}
       />
       {isPlaying ? (
         <FaPauseCircle
           color="#FACD66"
           alt="Play/Pause"
-          className="hiddem sm:block cursor-pointer"
+          className=" cursor-pointer"
           onClick={handlePlayPause}
         />
       ) : (
         <FaPlayCircle
           color="#FACD66"
           alt="Play/Pause"
-          className="hiddem sm:block cursor-pointer"
+          className="cursor-pointer"
           onClick={handlePlayPause}
         />
       )}
-      <img src={Next} alt="next" className="hiddem sm:block cursor-pointer" />
+      <img
+        src={Next}
+        alt="next"
+        className="hiddem sm:block cursor-pointer"
+        onClick={handleNextSong}
+      />
       <img
         src={RepeatOne}
         alt="Repeat"
-        className="hiddem sm:block cursor-pointer"
+        className="hidden md:block cursor-pointer"
+        onClick={() => setRepeat((prev) => !prev)}
       />
     </div>
   );

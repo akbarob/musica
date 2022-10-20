@@ -4,6 +4,7 @@ import { nextSong, playPause, prevSong } from "../../redux/feature/playerSlice";
 
 import { Control } from "./Control";
 import { Player } from "./Player";
+import Seekbar from "./Seekbar";
 import { Song } from "./Song";
 import { VolumeBar } from "./VolumeBar";
 
@@ -19,7 +20,7 @@ export default function MusicPlayer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (currentSong.length) dispatch(playPause(true));
+    if (currentSong?.length) dispatch(playPause(true));
   }, [currentIndex]);
 
   const handlePlayPause = () => {
@@ -53,9 +54,10 @@ export default function MusicPlayer() {
   };
 
   return (
-    <div className="relative w-full flex items-center  px-10">
+    <div className="relative sm:px-12 px-8 w-full flex items-center justify-between">
+      {" "}
       <Song isPlaying={isPlaying} isActive={isActive} activeSong={activeSong} />
-      <div className="flex-1 flex flex-col items-center justify-center">
+      <div className="flex-1 flex flex-col items-center justify-cent">
         <Control
           isPlaying={isPlaying}
           isActive={isActive}
@@ -63,10 +65,18 @@ export default function MusicPlayer() {
           setRepeat={setRepeat}
           shuffle={shuffle}
           setShuffle={setShuffle}
-          currentSong={currentSong}
+          currentSongs={currentSong}
           handlePlayPause={handlePlayPause}
           handlePrevSong={handlePrevSong}
           handleNextSong={handleNextSong}
+        />
+        <Seekbar
+          value={appTime}
+          min="0"
+          max={duration}
+          onInput={(event) => setSeekTime(event.target.value)}
+          setSeekTime={setSeekTime}
+          appTime={appTime}
         />
         <Player
           activeSong={activeSong}

@@ -31,14 +31,14 @@ export const Control = ({
         <FaPauseCircle
           color="#FACD66"
           alt="Play/Pause"
-          className=" cursor-pointer"
+          className=" cursor-pointer mx-5"
           onClick={handlePlayPause}
         />
       ) : (
         <FaPlayCircle
           color="#FACD66"
           alt="Play/Pause"
-          className="cursor-pointer"
+          className="cursor-pointer mx-5"
           onClick={handlePlayPause}
         />
       )}

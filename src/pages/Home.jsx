@@ -38,14 +38,15 @@ export const Home = () => {
   }, [country]);
   const { data: bycountry } = useGetSongsByCountryQuery(country);
   const locationSongs = bycountry?.slice(0, 15);
+  const herodata = data?.slice(0, 5);
 
   //   console.log(topCharts);
   //   if (isFetching) return <Loader title="Loading Songs Around You" />;
   //   if (error) return <Error />;
   return (
-    <div className="flex flex-col w-full overflow-y-auto hide-scrollbar md:pl-20 mt-20 ">
-      <div className="flex flex-col md:flex-row w-full mx-auto">
-        <Hero />
+    <div className="flex flex-col w-full overflow-y-auto hide-scrollbar md:pl-20 mt-20 pr-4">
+      <div className="flex flex-col lg:flex-row w-full mx-auto sm:mx-0">
+        <Hero herodata={herodata} />
         <TopCharts topcharts={topCharts} />
       </div>
       <div className="pl-6">
@@ -70,7 +71,7 @@ export const Home = () => {
           <p className="text-2xl font-bold text-[#EFEEE0] mb-[13px]">
             Popular in your area : ({country})
           </p>
-          <div className="flex flex-nowrap space-x-[30px] overflow-x-auto w-full hide-scrollbar">
+          <div className="flex flex-nowrap space-x-[30px] overflow-x-auto w-full h-full hide-scrollbar">
             {locationSongs?.map((song, i) => (
               <SongCard
                 key={song?.key}

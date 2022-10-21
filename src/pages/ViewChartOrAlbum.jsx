@@ -33,7 +33,7 @@ export const ViewChartOrAlbum = () => {
         />
       </div>
 
-      <div className="relative md:flex mt-20 md:pl-[100px] px-auto ">
+      <div className="relative z-20 md:flex mt-20 md:pl-[100px] px-auto ">
         <img
           src={songData ? songData?.images.coverart : Background}
           className="w-[357px] h-[289px] sm:w-[284px] sm:h-[288px] rounded-[35px] mx-auto md:mx-1 "
@@ -66,17 +66,15 @@ export const ViewChartOrAlbum = () => {
         </div>
       </div>
       <div className="p-10 md:px-24 z-40 ">
-        <div className="overflow-y-auto w-full relative ">
+        <div className="overflow-y-auto w-full relative backdrop-blur text-white">
           {songData?.sections[1].type === "LYRICS" ? (
             songData?.sections[1].text.map((line, i) => (
-              <p className="text-gray-400 z-50" key={`lyrics-${line}-${i}`}>
+              <p className=" z-50" key={`lyrics-${line}-${i}`}>
                 {line}
               </p>
             ))
           ) : (
-            <p className="text-gray-400 my-1 text-base">
-              Sorry, No Lyrics Found!
-            </p>
+            <p className=" my-1 text-base">Sorry, No Lyrics Found!</p>
           )}
         </div>
       </div>

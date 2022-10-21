@@ -9,7 +9,7 @@ export const PlayPause = ({
   handlePlay,
 }) =>
   isPlaying && activeSong?.title === song.title ? (
-    <FaPause size={35} className="text-gray-300" onClick={handlePause} />
+    <FaPause size={35} className="text-[#FACD66] p-2" onClick={handlePause} />
   ) : (
-    <FaPlay size={35} className="text-gray-300" onClick={handlePlay} />
+    <FaPlay size={35} className="text-[#FACD66] p-2" onClick={handlePlay} />
   );

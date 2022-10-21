@@ -11,7 +11,6 @@ import {
 
 // import { HiUser } from "react-icons/hi";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
-import { FiSearch } from "react-icons/fi";
 
 import { NavLink } from "react-router-dom";
 {
@@ -61,7 +60,7 @@ export default function Sidebar() {
             >
               {({ isActive }) => (
                 <item.icon
-                  className={isActive ? activeClassName : "fill-[#EFEEE0]"}
+                  className={isActive ? activeClassName : "fill-[#EFEEE0]/25"}
                 />
               )}
             </NavLink>
@@ -75,11 +74,11 @@ export default function Sidebar() {
           ))}
         </div>
       </div>
-      <FiSearch className="md:hidden text-white/25 w-[20px] h-[20px] absolute top-6 right-6" />
-      <div className="absolute md:hidden block top-6 left-3 z-10">
+
+      <div className="absolute md:hidden block top-6 left-3 z-30">
         <div className="flex flex-row w-full justify-between">
           <HiOutlineMenuAlt4
-            className="w-6 h-6 text-white mr-2 cursor-pointer"
+            className="w-6 h-6 text-white mr-2 cursor-pointer "
             onClick={() => setMobileOpen(!MobileOpen)}
           />
 

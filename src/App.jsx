@@ -1,13 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Home } from "./pages/Home";
-import Other from "./pages/Other";
 import Sidebar from "./components/Sidebar";
 import Searchbar from "./components/Searchbar";
 import MusicPlayer from "./components/musicPlayer/index";
 import { ViewChartOrAlbum } from "./pages/ViewChartOrAlbum";
-import Background from "./Lead-image.png";
 import { Collection } from "./pages/Collection";
+import Search from "./pages/Search";
 
 function App() {
   console.log("akbdmus opemipos");
@@ -19,9 +18,12 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="home" element={<Home />} />
+
           <Route path="ViewChartOrAlbum" element={<ViewChartOrAlbum />} />
           <Route path="song/:songid" element={<ViewChartOrAlbum />} />
           <Route path="collections" element={<Collection />} />
+          <Route path="search/:search" element={<Search />} />
         </Routes>
       </div>
       <div className="absolute h-[100px] bottom-0 left-0 right-0 flex animate-slideup bg-transparent backdrop-blur-lg z-50 border-t-2 border-white/20">

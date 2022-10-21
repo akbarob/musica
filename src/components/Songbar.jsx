@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Heart } from "../assets";
 import { PlayPause } from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/feature/playerSlice";
+import { useDispatch } from "react-redux";
 
 export default function Songbar({ song, i, isPlaying, activeSong, data }) {
+  const dispatch = useDispatch();
   console.log(song);
   const navigate = useNavigate();
 
@@ -17,10 +19,10 @@ export default function Songbar({ song, i, isPlaying, activeSong, data }) {
   };
 
   return (
-    <div className="relative flex flex-row bg-[#1A1E1F] h-[96px] w-[417px] rounded-[20px] mb-[12px] items-center p-4">
+    <div className="relative flex flex-row bg-[#1A1E1F] h-[96px] lg:w-[417px] rounded-[20px] mb-[12px] items-center p-4 ">
       <div className="relative group">
         <div
-          className={`absolute inset-0 items-center justify-center bg-amber-700 bg-opacity-50 rounded-[25px] group-hover:flex ${
+          className={`absolute inset-0 items-center justify-center bg-gray-700 bg-opacity-50 rounded-[25px] cursor-pointer  group-hover:flex ${
             activeSong?.title === song.title
               ? "flex bg-blue-500 bg-opacity-30"
               : "hidden"

@@ -26,6 +26,10 @@ export const api = createApi({
     getSongsByCountry: builder.query({
       query: (country) => `/charts/country?country_code=${country}`,
     }),
+    getSongsBySearch: builder.query({
+      query: (search) =>
+        `/search/multi?query=${search}&search_type=SONGS_ARTISTS`,
+    }),
   }),
 });
 
@@ -34,4 +38,5 @@ export const {
   useGetSongDetailsQuery,
   useGetRelatedSongsQuery,
   useGetSongsByCountryQuery,
+  useGetSongsBySearchQuery,
 } = api;

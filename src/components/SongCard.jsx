@@ -16,10 +16,10 @@ export default function SongCard({ song, i, isPlaying, activeSong, data }) {
     dispatch(setActiveSong({ song, data, i }));
   };
   return (
-    <div className="justify-center ">
+    <div className="justify-center w-[153px]  mx-auto">
       <div className="relative group cursor-pointer">
         <div
-          className={`absolute inset-0 items-center justify-center bg-amber-700 bg-opacity-50 rounded-[25px] group-hover:flex ${
+          className={`absolute inset-0 items-center justify-center bg-gray-700 bg-opacity-50 rounded-[25px] group-hover:flex ${
             activeSong?.title === song.title
               ? "flex bg-blue-500 bg-opacity-30"
               : "hidden"

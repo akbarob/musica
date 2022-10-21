@@ -8,7 +8,6 @@ import {
   Profile,
   Logout,
 } from "../assets";
-import Home1 from "../assets/Home-1.svg";
 
 // import { HiUser } from "react-icons/hi";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
@@ -20,23 +19,23 @@ import { NavLink } from "react-router-dom";
 }
 
 const links = [
-  { name: "Home", to: "/", icon: Home },
+  { name: "Home", to: "/home", icon: Home },
 
   { name: "Library", to: "Collections", icon: Playlist },
-  { name: "Radio", to: "ViewChartOrAlbum", icon: Radio },
-  { name: "Video", to: "Video", icon: Videos },
+  { name: "Radio", to: "//", icon: Radio },
+  { name: "Video", to: "//", icon: Videos },
 ];
 const user = [
-  { name: "Profile", to: "#", icon: Profile },
-  { name: "Logout", to: "#", icon: Logout },
+  { name: "Profile", to: "//", icon: Profile },
+  { name: "Logout", to: "//", icon: Logout },
 ];
 const mobilelinks = [
   { name: "Home", to: "/", icon: Home },
   { name: "Library", to: "Collections", icon: Playlist },
-  { name: "Radio", to: "ViewChartOrAlbum", icon: Radio },
-  { name: "Video", to: "Video", icon: Videos },
-  { name: "Profile", to: "#", icon: Profile },
-  { name: "Logout", to: "#", icon: Logout },
+  { name: "Radio", to: "//", icon: Radio },
+  { name: "Video", to: "//", icon: Videos },
+  { name: "Profile", to: "//", icon: Profile },
+  { name: "Logout", to: "//", icon: Logout },
 ];
 
 const NavLinks = () => <div></div>;
@@ -45,6 +44,8 @@ export default function Sidebar() {
   const ToggleMenu = () => {
     setMobileOpen(!MobileOpen);
   };
+  let activeClassName = "fill-[#FACD66]";
+
   return (
     <div className="">
       <div className=" absolute hidden md:flex flex-col py-10 h-screen z-30 px-4 backdrop-blur-xs pr-5">
@@ -58,18 +59,18 @@ export default function Sidebar() {
               to={item.to}
               className="flex flex-col justify-between items-center"
             >
-              <img
-                src={item.icon}
-                className="fill-red-600 text-yellow-700 w-6 hover:text-cyan-400 hover:fill-orange-600 "
-                alt="icon "
-              />
+              {({ isActive }) => (
+                <item.icon
+                  className={isActive ? activeClassName : "fill-[#EFEEE0]"}
+                />
+              )}
             </NavLink>
-          ))}{" "}
+          ))}
         </div>
         <div className="bg-[#1A1E1F]  rounded-[32px] mt-10 h-[127px] w-[52px] flex flex-col justify-evenly items-center">
           {user.map((item) => (
             <NavLink key={item.name}>
-              <img src={item.icon} alt={item.name} />
+              <item.icon />
             </NavLink>
           ))}
         </div>
@@ -100,13 +101,12 @@ export default function Sidebar() {
               to={item.to}
               className="flex flex-col my-12 items-start"
             >
-              <div className="flex pl-8">
-                <img
-                  src={item.icon}
-                  className="fill-red-600 text-yellow-700 w-6 hover:text-cyan-400 hover:fill-orange-600 "
-                  alt="icon "
-                />
-                <p className="text-lg text-white ml-4">{item.name}</p>
+              <div
+                className="flex pl-8 text-white hover:text-[#FACD66] "
+                onClick={() => setMobileOpen(!MobileOpen)}
+              >
+                <item.icon className="fill-[#EFEEE0] hover:fill-[#FACD66]" />
+                <p className="text-lg  ml-4">{item.name}</p>
               </div>
             </NavLink>
           ))}{" "}

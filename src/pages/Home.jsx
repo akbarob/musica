@@ -41,8 +41,8 @@ export const Home = () => {
   const herodata = data?.slice(0, 5);
 
   //   console.log(topCharts);
-  //   if (isFetching) return <Loader title="Loading Songs Around You" />;
-  //   if (error) return <Error />;
+  if (isFetching) return <Loader title="Loading Songs Around You" />;
+  if (error) return <Error />;
   return (
     <div className="flex flex-col w-full overflow-y-auto hide-scrollbar md:pl-20 mt-20 pr-4">
       <div className="flex flex-col lg:flex-row w-full mx-auto sm:mx-0">

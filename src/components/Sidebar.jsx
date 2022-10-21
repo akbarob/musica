@@ -29,7 +29,7 @@ const user = [
   { name: "Logout", to: "//", icon: Logout },
 ];
 const mobilelinks = [
-  { name: "Home", to: "/", icon: Home },
+  { name: "Home", to: "home", icon: Home },
   { name: "Library", to: "Collections", icon: Playlist },
   { name: "Radio", to: "//", icon: Radio },
   { name: "Video", to: "//", icon: Videos },
@@ -66,10 +66,10 @@ export default function Sidebar() {
             </NavLink>
           ))}
         </div>
-        <div className="bg-[#1A1E1F]  rounded-[32px] mt-10 h-[127px] w-[52px] flex flex-col justify-evenly items-center">
+        <div className="bg-[#1A1E1F] rounded-[32px] mt-10 h-[127px] w-[52px] flex flex-col justify-evenly items-center">
           {user.map((item) => (
             <NavLink key={item.name}>
-              <item.icon />
+              <item.icon className="fill-[#EFEEE0]/25 hover:fill-[#FACD66]" />{" "}
             </NavLink>
           ))}
         </div>
@@ -104,7 +104,7 @@ export default function Sidebar() {
                 className="flex pl-8 text-white hover:text-[#FACD66] "
                 onClick={() => setMobileOpen(!MobileOpen)}
               >
-                <item.icon className="fill-[#EFEEE0] hover:fill-[#FACD66]" />
+                <item.icon className="fill-[#EFEEE0]/25 hover:fill-[#FACD66]" />
                 <p className="text-lg  ml-4">{item.name}</p>
               </div>
             </NavLink>

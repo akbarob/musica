@@ -7,6 +7,7 @@ import MusicPlayer from "./components/musicPlayer/index";
 import { ViewChartOrAlbum } from "./pages/ViewChartOrAlbum";
 import { Collection } from "./pages/Collection";
 import Search from "./pages/Search";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   console.log("akbdmus opemipos");
@@ -15,16 +16,17 @@ function App() {
       <Sidebar />
       <div className="flex flex-col bg-[#1E1E1E] w-full pb-24">
         <Searchbar />
+        <AnimatePresence>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="home" element={<Home />} />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="home" element={<Home />} />
-
-          <Route path="ViewChartOrAlbum" element={<ViewChartOrAlbum />} />
-          <Route path="song/:songid" element={<ViewChartOrAlbum />} />
-          <Route path="collections" element={<Collection />} />
-          <Route path="search/:search" element={<Search />} />
-        </Routes>
+            <Route path="ViewChartOrAlbum" element={<ViewChartOrAlbum />} />
+            <Route path="song/:songid" element={<ViewChartOrAlbum />} />
+            <Route path="collections" element={<Collection />} />
+            <Route path="search/:search" element={<Search />} />
+          </Routes>
+        </AnimatePresence>
       </div>
       <div className="absolute h-[100px] bottom-0 left-0 right-0 flex animate-slideup bg-transparent backdrop-blur-lg z-50 border-t-2 border-white/20">
         <MusicPlayer />

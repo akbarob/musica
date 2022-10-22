@@ -5,17 +5,14 @@ import SongCard from "../components/SongCard";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 
-// //import swiper
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { FreeMode } from "swiper";
-// import "swiper/css";
-// import "swiper/css/free-mode";
 //fetch data using redux
 import {
   useGetWorldChartQuery,
   useGetSongsByCountryQuery,
 } from "../redux/services/Api";
 import { useSelector } from "react-redux";
+//framermotion
+import { motion } from "framer-motion";
 
 export const Home = () => {
   const { data, isFetching, error } = useGetWorldChartQuery();
@@ -44,7 +41,12 @@ export const Home = () => {
   if (isFetching) return <Loader title="Loading Songs Around You" />;
   if (error) return <Error />;
   return (
-    <div className="flex flex-col w-full overflow-y-auto hide-scrollbar md:pl-20 mt-20 pr-4">
+    <motion.div
+      className="flex flex-col w-full overflow-y-auto hide-scrollbar md:pl-20 mt-20 pr-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 1 } }}
+      exit={{ opacity: 0 }}
+    >
       <div className="flex flex-col lg:flex-row w-full mx-auto sm:mx-0">
         <Hero herodata={herodata} />
         <TopCharts topcharts={topCharts} />
@@ -85,6 +87,6 @@ export const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

@@ -8,7 +8,7 @@ export const api = createApi({
     prepareHeaders: (headers) => {
       headers.set(
         "X-RapidAPI-Key",
-        "f7286fa7abmshdcfc0e8418ff766p1a4dbfjsn4d8030d3f457"
+        "1d94da288amsh002d0f0eab872f1p1a9712jsn906d5d9188f0"
       );
       return headers;
     },

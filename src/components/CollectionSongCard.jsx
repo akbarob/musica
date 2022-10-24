@@ -3,8 +3,16 @@ import { useDispatch } from "react-redux";
 import { playPause, setActiveSong } from "../redux/feature/playerSlice";
 import { PlayPause } from "./PlayPause";
 import Background from "../Lead-image.png";
+import { MdDelete } from "react-icons/md";
 
-export default function SongCard({ song, i, isPlaying, activeSong, data }) {
+export default function SongCard({
+  song,
+  i,
+  isPlaying,
+  activeSong,
+  data,
+  removeFromCollection,
+}) {
   const dispatch = useDispatch();
 
   const handlePause = () => {
@@ -39,6 +47,12 @@ export default function SongCard({ song, i, isPlaying, activeSong, data }) {
           103 plays
         </p>
       </div>
+      <button
+        className="absolute bottom-2  bg-yellow-600 font-bold hidden group-hover:flex items-center justify-center text-center rounded-lg w-full text-white"
+        onClick={() => removeFromCollection(song)}
+      >
+        Remove <MdDelete />
+      </button>
     </div>
   );
 }

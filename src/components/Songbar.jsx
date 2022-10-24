@@ -24,7 +24,7 @@ export default function Songbar({ song, i, isPlaying, activeSong, data }) {
         <div
           className={`absolute inset-0 items-center justify-center bg-gray-700 bg-opacity-50 rounded-[25px] cursor-pointer  group-hover:flex ${
             activeSong?.title === song.title
-              ? "flex bg-blue-500 bg-opacity-30"
+              ? "flex bg-gray-500 bg-opacity-30"
               : "hidden"
           }`}
         >
@@ -37,7 +37,7 @@ export default function Songbar({ song, i, isPlaying, activeSong, data }) {
           />
         </div>
         <img
-          src={song.images.background}
+          src={song?.images?.background}
           className="w-[63px] h-[63px] rounded-[10px]"
         />
       </div>
@@ -46,12 +46,12 @@ export default function Songbar({ song, i, isPlaying, activeSong, data }) {
           className="text-lg text-[#ffffff] cursor-pointer"
           onClick={() => navigate(`/song/${song?.key}`)}
         >
-          {song.title}
+          {song?.title}
         </p>
         <p className="text-xs text-[#ffffff]/50 mb-1 cursor-pointer">
-          {song.subtitle}
+          {song?.subtitle}
         </p>
-        <p className="text-xs text-[#ffffff]">{song.subtitle}</p>
+        <p className="text-xs text-[#ffffff]">{song?.subtitle}</p>
       </div>
       <div
         className="absolute right-10 top-10 border-1 border-[

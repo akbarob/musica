@@ -11,3 +11,9 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+@layer base {
+  button {
+    @apply hover:bg-[#FACD66]/20 rounded-[20px] items-center justify-evenly cursor-pointer active:bg-[#FACD66] focus:ring-[2px] focus:ring-gray-100;
+  }
+}

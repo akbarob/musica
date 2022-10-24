@@ -60,7 +60,9 @@ export default function Sidebar() {
             >
               {({ isActive }) => (
                 <item.icon
-                  className={isActive ? activeClassName : "fill-[#EFEEE0]/25"}
+                  className={`${
+                    isActive ? activeClassName : "fill-[#EFEEE0]/25"
+                  } hover:fill-[#FACD66]`}
                 />
               )}
             </NavLink>

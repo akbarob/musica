@@ -16,7 +16,7 @@ export const Song = ({ isPlaying, isActive, activeSong }) => {
               className="rounded-full"
             />
           </div>
-          <div className="w-[50%] ml-4">
+          <div className="w-[50%]">
             <p className="truncate text-white font-bold text-sm">
               {activeSong?.title ? activeSong?.title : "No active Song"}
             </p>

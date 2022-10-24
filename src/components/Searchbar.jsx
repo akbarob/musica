@@ -16,7 +16,7 @@ export default function Searchbar() {
   return (
     <form
       className="bg-[
-      #1D2123]  absolute  text-[#FFFFFF]/25 focus-within:text-white mb-4 z-10 py-4 pl-20 w-full"
+      #1D2123]  absolute  text-[#FFFFFF]/25 focus-within:text-white mb-4 z-10 py-4 pl-20 w-full backdrop-blur"
       onSubmit={handleSubmit}
     >
       <FiSearch

@@ -21,7 +21,7 @@ export default function SongCard({ song, i, isPlaying, activeSong, data }) {
         <div
           className={`absolute inset-0 items-center justify-center bg-gray-700 bg-opacity-50 rounded-[25px] group-hover:flex ${
             activeSong?.title === song.title
-              ? "flex bg-blue-500 bg-opacity-30"
+              ? "flex bg-gray-500 bg-opacity-30"
               : "hidden"
           }`}
         >

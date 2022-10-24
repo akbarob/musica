@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Background from "../Lead-image.png";
 import { Heart, Add } from "../assets";
 import { FaPlayCircle } from "react-icons/fa";
@@ -10,20 +10,27 @@ import {
 } from "../redux/services/Api";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import { useSelector } from "react-redux";
 
-export const ViewChartOrAlbum = () => {
+export const ViewChartOrAlbum = ({ AddToCollection, Collectionsongs }) => {
   const { songid } = useParams();
+  console.log("collections:", Collectionsongs);
+  console.log(songid);
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
+
   const { data: songData, isFetching, error } = useGetSongDetailsQuery(songid);
   const { data: RelatedData } = useGetRelatedSongsQuery(songid);
 
   const RelatedSongs = RelatedData?.slice(0, 10);
   console.log(RelatedSongs);
+
   //   console.log(songData);
 
   //   console.log(songid);
   if (isFetching)
     return <Loader title="Loading songs, lyrics And Related songs" />;
   if (error) return <Error />;
+
   return (
     <div className=" w-full h-[85vh] overflow-y-auto hide-scrollbar ">
       <div className="w-full h-full absolute">
@@ -33,7 +40,7 @@ export const ViewChartOrAlbum = () => {
         />
       </div>
 
-      <div className="relative z-20 md:flex mt-20 md:pl-[100px] px-auto ">
+      <div className="relative  md:flex mt-20 md:pl-[100px] px-auto">
         <img
           src={songData ? songData?.images.coverart : Background}
           className="w-[357px] h-[289px] sm:w-[284px] sm:h-[288px] rounded-[35px] mx-auto md:mx-1 "
@@ -43,25 +50,35 @@ export const ViewChartOrAlbum = () => {
           <p className="text-[14px] mb-2">{songData?.subtitle}</p>
           <p className="text-[14px]">10 Related songs</p>
           <div className="flex justify-between items-center mt-4 sm:w-[292px] ">
-            <div className="h-[36px] w-[87px] flex backdrop-blur-lg bg-white/10 rounded-[20px] items-center justify-evenly cursor-pointer ">
+            <button className="h-[36px] w-[87px] flex backdrop-blur-lg bg-white/10 ">
               <FaPlayCircle
                 color="#FACD66"
                 alt="Play/Pause"
                 className="hiddem sm:block "
               />
               <p className="text-[12px]">Play all</p>
-            </div>
-            <div className="h-[36px] w-[151px] flex backdrop-blur-lg bg-white/10 rounded-[20px] items-center justify-evenly cursor-pointer">
-              <img src={Add} alt="heart_icon" className="w-[16px] h-[16px]" />
-              <p className="text-[12px]">Add to collection</p>
-            </div>
-            <div className="hidden h-[36px] w-[36px] sm:flex backdrop-blur-lg bg-white/10 rounded-[20px] items-center justify-evenly cursor-pointer">
+            </button>
+            {Collectionsongs.filter((song) => song.key === songid)[0] ? (
+              <button className="h-[36px] w-[151px] flex backdrop-blur-lg bg-white/10 ">
+                <img src={Add} alt="heart_icon" className="w-[16px] h-[16px]" />
+                <p className="text-[12px]">Already in collection</p>
+              </button>
+            ) : (
+              <button
+                className="h-[36px] w-[151px] flex backdrop-blur-lg bg-white/10 "
+                onClick={() => AddToCollection(songData)}
+              >
+                <img src={Add} alt="heart_icon" className="w-[16px] h-[16px]" />
+                <p className="text-[12px]">Add to collection</p>
+              </button>
+            )}
+            <button className="hidden h-[36px] w-[36px] sm:flex backdrop-blur-lg bg-white/10 ">
               <img src={Heart} alt="heart_icon" className="w-[16px] h-[16px]" />
-            </div>
-            <div className="sm:hidden h-[36px] w-[90px] flex backdrop-blur-lg bg-white/10 rounded-[20px] items-center justify-evenly cursor-pointer">
+            </button>
+            <button className="sm:hidden h-[36px] w-[90px] flex backdrop-blur-lg bg-white/10 hover:bg-[#FACD66]/20  rounded-[20px] items-center justify-evenly cursor-pointer">
               <img src={Add} alt="heart_icon" className="w-[16px] h-[16px]" />
               <p className="text-[12px]">Like</p>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -83,7 +100,14 @@ export const ViewChartOrAlbum = () => {
           Related songs
         </h3>
         {RelatedSongs?.map((song, i) => (
-          <LongSongbar key={song.key} song={song} i={i} />
+          <LongSongbar
+            key={song.key}
+            song={song}
+            i={i}
+            data={RelatedSongs}
+            activeSong={activeSong}
+            isPlaying={isPlaying}
+          />
         ))}
       </div>
     </div>

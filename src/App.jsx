@@ -13,9 +13,9 @@ import Liked from "./components/Liked";
 import MyCollection from "./components/MyCollection";
 
 function App() {
-  console.log("akbdmus opemipos");
   const [collectionSongs, setCollectionsongs] = useState([]);
   const [liked, setLiked] = useState([]);
+  console.log("liked:", liked);
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("musica-collection", JSON.stringify(items));
@@ -56,8 +56,14 @@ function App() {
     console.log("removed liked:");
   };
   useEffect(() => {
-    const songsCollection = JSON.parse(localStorage.getItem("musica"));
+    const songsCollection = JSON.parse(
+      localStorage.getItem("musica-collection")
+    );
     setCollectionsongs(songsCollection);
+
+    const likedSongs = JSON.parse(localStorage.getItem("musica-liked"));
+
+    setLiked(likedSongs);
   }, []);
   return (
     <div className="flex flex-row h-screen font-quicksand relative">
@@ -66,7 +72,16 @@ function App() {
         <Searchbar />
         <AnimatePresence>
           <Routes>
-            <Route path="/*" element={<Home />} />
+            <Route
+              path="/*"
+              element={
+                <Home
+                  AddToLiked={AddToLiked}
+                  liked={liked}
+                  removeFromLiked={removeFromLiked}
+                />
+              }
+            />
             <Route path="ViewChartOrAlbum" element={<ViewChartOrAlbum />} />
             <Route
               path="song/:songid"
@@ -75,8 +90,9 @@ function App() {
                   AddToCollection={AddToCollection}
                   removeFromCollection={removeFromCollection}
                   AddToLiked={AddToLiked}
-                  removeFromLIked={removeFromLiked}
+                  removeFromLiked={removeFromLiked}
                   collectionsongs={collectionSongs}
+                  liked={liked}
                 />
               }
             />
@@ -87,7 +103,7 @@ function App() {
                   collectionsongs={collectionSongs}
                   liked={liked}
                   removeFromCollection={removeFromCollection}
-                  removeFromLIked={removeFromLiked}
+                  removeFromLiked={removeFromLiked}
                 />
               }
             />

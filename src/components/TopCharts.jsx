@@ -3,7 +3,12 @@ import { useSelector } from "react-redux";
 import Songbar from "./Songbar";
 import SsSongCard from "./SsSongCard";
 
-export default function TopCharts({ topcharts }) {
+export default function TopCharts({
+  topcharts,
+  AddToLiked,
+  removeFromLiked,
+  liked,
+}) {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   return (
@@ -19,6 +24,9 @@ export default function TopCharts({ topcharts }) {
               data={topcharts}
               activeSong={activeSong}
               isPlaying={isPlaying}
+              AddToLiked={AddToLiked}
+              removeFromLiked={removeFromLiked}
+              liked={liked}
             />
           ))}
         </div>
@@ -31,6 +39,9 @@ export default function TopCharts({ topcharts }) {
               data={topcharts}
               activeSong={activeSong}
               isPlaying={isPlaying}
+              AddToLiked={AddToLiked}
+              removeFromLiked={removeFromLiked}
+              liked={liked}
             />
           ))}
         </div>

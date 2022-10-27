@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 const MyCollection = ({ collectionsongs, removeFromCollection }) => {
   const data = collectionsongs;
-  console.log(data);
+  console.log("collection:", data);
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   return (
     <motion.div

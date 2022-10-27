@@ -47,14 +47,11 @@ export default function SongCard({
         </p>
       </div>
       <button
-        className="absolute bottom-2  bg-yellow-600 font-bold hidden group-hover:flex items-center justify-center text-center rounded-lg w-full text-white"
+        className="absolute bottom-2 right-3 bg-yellow-600 font-bold hidden group-hover:flex items-center justify-center text-center rounded-full w-1/4 text-white"
         onClick={() => removeFromCollection(song)}
       >
-        Remove <MdDelete />
+        <MdDelete />
       </button>
     </div>
   );
 }
-// activeSong?.title === song?.title
-//             ? "flex bg-yellow-500 bg-opacity-30"
-//             : "hidden"

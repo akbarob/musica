@@ -5,18 +5,18 @@ import SongCard from "../components/SongCard";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 
-//fetch data using redux
-// import {
-//   useGetWorldChartQuery,
-//   useGetSongsByCountryQuery,
-// } from "../redux/services/Api";
+// fetch data using redux
+import {
+  useGetWorldChartQuery,
+  useGetSongsByCountryQuery,
+} from "../redux/services/Api";
 import { useSelector } from "react-redux";
 //framermotion
 import { motion } from "framer-motion";
-import { data } from "../songs";
+// import { data } from "../songs";
 
-export const Home = () => {
-  // const { data, isFetching, error } = useGetWorldChartQuery();
+export const Home = ({ AddToLiked, liked, removeFromLiked }) => {
+  const { data, isFetching, error } = useGetWorldChartQuery();
 
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const topCharts = data?.slice(0, 3);
@@ -29,20 +29,19 @@ export const Home = () => {
       "https://geo.ipify.org/api/v2/country?apiKey=at_5Wv0Pzx0WiS7ALIJ9TNo0wI8XTmLb"
     )
       .then((response) => response.json())
-      //   .then((data) => console.log(data))
       .then((data) => setCountry(data.location.country))
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
   }, [country]);
-  // const { data: bycountry } = useGetSongsByCountryQuery(country);
-  const locationSongs = data?.slice(0, 15);
-  // const locationSongs = bycountry?.slice(0, 15);
+  const { data: bycountry } = useGetSongsByCountryQuery(country);
+  // const locationSongs = data?.slice(0, 15)
+  const locationSongs = bycountry?.slice(0, 15);
 
   const herodata = data?.slice(0, 5);
 
   //   console.log(topCharts);
-  // if (isFetching) return <Loader title="Loading Songs Around You" />;
-  // if (error) return <Error />;
+  if (isFetching) return <Loader title="Loading Songs Around You" />;
+  if (error) return <Error />;
   return (
     <motion.div
       className="flex flex-col w-full overflow-y-auto hide-scrollbar md:pl-20 mt-20 pr-4"
@@ -52,7 +51,12 @@ export const Home = () => {
     >
       <div className="flex flex-col lg:flex-row w-full mx-auto sm:mx-0">
         <Hero herodata={herodata} />
-        <TopCharts topcharts={topCharts} />
+        <TopCharts
+          topcharts={topCharts}
+          AddToLiked={AddToLiked}
+          liked={liked}
+          removeFromLiked={removeFromLiked}
+        />
       </div>
       <div className="pl-6">
         <div className=" mt-[43px] flex flex-col ">
@@ -64,7 +68,7 @@ export const Home = () => {
               <SongCard
                 key={song.key}
                 song={song}
-                data={topCharts}
+                data={newRelease}
                 activeSong={activeSong}
                 isPlaying={isPlaying}
                 i={i}

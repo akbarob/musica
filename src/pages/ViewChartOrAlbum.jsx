@@ -15,6 +15,9 @@ export const ViewChartOrAlbum = ({
   AddToCollection,
   collectionsongs,
   removeFromCollection,
+  AddToLiked,
+  removeFromLiked,
+  liked,
 }) => {
   const { songid } = useParams();
   console.log("collections:", collectionsongs);
@@ -78,13 +81,29 @@ export const ViewChartOrAlbum = ({
                 <p className="text-[12px]">Add to collection</p>
               </button>
             )}
-            <button className="hidden h-[36px] w-[36px] sm:flex backdrop-blur-lg bg-white/10 ">
+            <button
+              className="hidden h-[36px] w-[36px] sm:flex backdrop-blur-lg bg-white/10 "
+              onClick={() => AddToLiked(songData)}
+            >
               <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
             </button>
-            <button className="sm:hidden h-[36px] w-[90px] flex backdrop-blur-lg bg-white/10 hover:bg-[#FACD66]/20  rounded-[20px] items-center justify-evenly cursor-pointer">
-              <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
-              <p className="text-[12px]">Like</p>
-            </button>
+            {liked?.filter((song) => song.key === songid)[0] ? (
+              <button
+                className="sm:hidden h-[36px] w-[90px] flex backdrop-blur-lg bg-white/10 hover:bg-[#FACD66]/20  rounded-[20px] items-center justify-evenly cursor-pointer"
+                onClick={() => removeFromLiked(songData)}
+              >
+                <Heart className="w-[16px] h-[14px] max-w-none  stroke-[#EFEEE0]" />
+                <p className="text-[12px]">Like</p>
+              </button>
+            ) : (
+              <button
+                className="sm:hidden h-[36px] w-[90px] flex backdrop-blur-lg bg-white/10 hover:bg-[#FACD66]/20  rounded-[20px] items-center justify-evenly cursor-pointer"
+                onClick={() => AddToLiked(songData)}
+              >
+                <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
+                <p className="text-[12px]">Like</p>
+              </button>
+            )}
           </div>
         </div>
       </div>

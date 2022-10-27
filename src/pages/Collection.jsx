@@ -12,7 +12,9 @@ export const Collection = ({
   collectionsongs,
   removeFromCollection,
   liked,
+  removeFromLiked,
 }) => {
+  console.log("liked:", liked);
   const [col, setCol] = useState(true);
   const [likes, setlikes] = useState(false);
 
@@ -34,9 +36,9 @@ export const Collection = ({
   // if (error) return <Error />;
 
   let activeClassName =
-    "p-[10px] h-[36px] w-[178px] md:w-[120px] flex backdrop-blur-lg bg-[#FACD66] rounded-[20px] items-center justify-evenly cursor-pointer mr-4 hover:bg-[#FACD66]";
+    "p-[10px] h-[36px] w-[178px] flex backdrop-blur-lg bg-[#FACD66] rounded-[20px] items-center justify-evenly cursor-pointer mr-4 hover:bg-[#FACD66]";
   let NotActive =
-    "p-[10px] h-[36px] w-[178px] md:w-[120px] flex itemscenter bg-transparent rounded-[20px] items-center justify-evenly cursor-pointer mr-4 border text-[#EFEEE0] hover:fill-[#FACD66]";
+    "p-[10px] h-[36px] w-[178px]  flex itemscenter bg-transparent rounded-[20px] items-center justify-evenly cursor-pointer mr-4 border text-[#EFEEE0] hover:fill-[#FACD66]";
   return (
     <motion.div
       className="flex flex-col w-full overflow-y-auto hide-scrollbar md:pl-20 mt-[60px] md:mt-[50px] "
@@ -45,7 +47,7 @@ export const Collection = ({
       exit={{ opacity: 0 }}
     >
       <div className="flex justify-between items-center mt-4 md:w-[220px] mx-auto md:ml-2 ">
-        <NavLink className='className="p-[10px] h-[36px] w-[178px] md:w-[120px] flex  rounded-[20px] items-center justify-evenly cursor-pointer mr-4 '>
+        <NavLink className='className="p-[10px] h-[36px] w-[178px] md:w--[178px] flex  rounded-[20px] items-center justify-evenly cursor-pointer mr-4 '>
           <button
             onClick={handleCol}
             className={`${col ? activeClassName : NotActive} `}
@@ -75,7 +77,14 @@ export const Collection = ({
               }
             />
           )}
-          {likes && <Route path="/" element={<Liked liked={liked} />} />}
+          {likes && (
+            <Route
+              path="/"
+              element={
+                <Liked liked={liked} removeFromLiked={removeFromLiked} />
+              }
+            />
+          )}
         </Routes>
       </div>
     </motion.div>

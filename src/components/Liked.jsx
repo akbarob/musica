@@ -1,9 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import LikesCard from "../components/LikesCard";
+import { useSelector } from "react-redux";
 
-const Liked = ({ liked }) => {
+const Liked = ({ liked, removeFromLiked }) => {
   const data = liked;
+  console.log(data);
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   return (
     <motion.div
@@ -12,7 +15,7 @@ const Liked = ({ liked }) => {
       exit={{ opacity: 0 }}
       className="overflow-y-auto mt-[32px] hide-scrollbar"
     >
-      <div className="overflow-y-auto mt-[32px] hide-scrollbar">
+      <div className="overflow-y-auto mt-[32px] hide-scrollbar px-3 md:px-0">
         {data?.length === 0 ? (
           <div className="items-center justify-center text-white mx-auto w-[300px]">
             {" "}
@@ -25,7 +28,7 @@ const Liked = ({ liked }) => {
             </p>
           </div>
         ) : (
-          <div className="grid gap-x-[24px] md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
+          <div className=" grid  lg:grid-cols-2 2xl:grid-cols-3 ">
             {data?.map((song, i) => (
               <LikesCard
                 key={song.key}
@@ -34,7 +37,7 @@ const Liked = ({ liked }) => {
                 isPlaying={isPlaying}
                 data={data}
                 className="max-h-none"
-                removeFromCollection={removeFromCollection}
+                removeFromLiked={removeFromLiked}
               />
             ))}
           </div>

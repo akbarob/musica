@@ -5,7 +5,14 @@ import { PlayPause } from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/feature/playerSlice";
 import { useDispatch } from "react-redux";
 
-export default function LikesCard({ song, i, isPlaying, activeSong, data }) {
+export default function LikesCard({
+  song,
+  i,
+  isPlaying,
+  activeSong,
+  data,
+  removeFromLiked,
+}) {
   const dispatch = useDispatch();
   const audioRef = useRef(null);
   const [duration, setDuration] = useState(0);
@@ -69,10 +76,9 @@ export default function LikesCard({ song, i, isPlaying, activeSong, data }) {
       >
         {" "}
         <button className="outline outline-offset-8 outline-1 rounded-full outline-[#FFFFFF]/10 it">
-          <img
-            src={Heart}
-            alt="heart_icon"
-            className="w-[14.25px] h-[13.5px]"
+          <Heart
+            className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black"
+            onClick={() => removeFromLiked(song)}
           />
         </button>
       </div>

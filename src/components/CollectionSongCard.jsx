@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { playPause, setActiveSong } from "../redux/feature/playerSlice";
 import { PlayPause } from "./PlayPause";
-import Background from "../Lead-image.png";
 import { MdDelete } from "react-icons/md";
 
 export default function SongCard({
@@ -25,7 +24,7 @@ export default function SongCard({
   return (
     <div className="relative rounded-[25px] w-[359px] h-[234px] md:w-[213px] md:h-[234px] justify-center cursor-pointer group overflow-hidden mx-auto mb-[20px] ">
       <img
-        src={song ? song?.images?.coverart : Background}
+        src={song && song?.images?.coverart}
         className=" absolute objext-cover w-full h-full mix-blend-normal hover:scale-125 ease-in-out duration-500 "
       />
       <div

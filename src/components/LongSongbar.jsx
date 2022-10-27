@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { Heart, More } from "../assets";
-import Background from "../Lead-image.png";
 import { PlayPause } from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/feature/playerSlice";
 import { useDispatch } from "react-redux";
@@ -40,16 +39,12 @@ export const LongSongbar = ({ song, i, isPlaying, activeSong, data }) => {
           />
         </div>
         <img
-          src={song ? song?.images?.coverart : Background}
+          src={song && song?.images?.coverart}
           className="w-[39px] h-[39px] rounded-[10px] max-w-none"
         />
       </div>
       <button className=" ml-[20.13px]">
-        <img
-          src={Heart}
-          alt="heart_icon"
-          className="w-[14.25px] h-[13.5px] max-w-none"
-        />
+        <Heart className="w-[16px] h-[14px] max-w-none stroke-[#EFEEE0]" />
       </button>
       <div className="flex items-center justify-between py-6 w-full mx-4 lg:mx-8">
         <div className="flex flex-col lg:flex-row items-start">

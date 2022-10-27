@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Background from "../Lead-image.png";
 import { Heart, Add } from "../assets";
 import { FaPlayCircle } from "react-icons/fa";
 import { LongSongbar } from "../components/LongSongbar";
@@ -12,9 +11,13 @@ import Loader from "../components/Loader";
 import Error from "../components/Error";
 import { useSelector } from "react-redux";
 
-export const ViewChartOrAlbum = ({ AddToCollection, Collectionsongs }) => {
+export const ViewChartOrAlbum = ({
+  AddToCollection,
+  collectionsongs,
+  removeFromCollection,
+}) => {
   const { songid } = useParams();
-  console.log("collections:", Collectionsongs);
+  console.log("collections:", collectionsongs);
   console.log(songid);
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
@@ -36,13 +39,13 @@ export const ViewChartOrAlbum = ({ AddToCollection, Collectionsongs }) => {
       <div className="w-full h-full absolute">
         <img
           className="absolute w-full h-full object-cover mix-blend-multiply "
-          src={songData ? songData?.images.background : Background}
+          src={songData && songData?.images.background}
         />
       </div>
 
       <div className="relative  md:flex mt-20 md:pl-[100px] px-auto">
         <img
-          src={songData ? songData?.images.coverart : Background}
+          src={songData && songData?.images.coverart}
           className="w-[357px] h-[289px] sm:w-[284px] sm:h-[288px] rounded-[35px] mx-auto md:mx-1 "
         />
         <div className=" mt-6 md:mt-32 ml-8 text-white flex flex-col mr-8">
@@ -58,8 +61,11 @@ export const ViewChartOrAlbum = ({ AddToCollection, Collectionsongs }) => {
               />
               <p className="text-[12px]">Play all</p>
             </button>
-            {Collectionsongs.filter((song) => song.key === songid)[0] ? (
-              <button className="h-[36px] w-[151px] flex backdrop-blur-lg bg-white/10 ">
+            {collectionsongs.filter((song) => song.key === songid)[0] ? (
+              <button
+                className="h-[36px] w-[151px] flex backdrop-blur-lg bg-white/10 "
+                onClick={() => removeFromCollection(songData)}
+              >
                 <img src={Add} alt="heart_icon" className="w-[16px] h-[16px]" />
                 <p className="text-[12px]">Already in collection</p>
               </button>
@@ -73,10 +79,10 @@ export const ViewChartOrAlbum = ({ AddToCollection, Collectionsongs }) => {
               </button>
             )}
             <button className="hidden h-[36px] w-[36px] sm:flex backdrop-blur-lg bg-white/10 ">
-              <img src={Heart} alt="heart_icon" className="w-[16px] h-[16px]" />
+              <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
             </button>
             <button className="sm:hidden h-[36px] w-[90px] flex backdrop-blur-lg bg-white/10 hover:bg-[#FACD66]/20  rounded-[20px] items-center justify-evenly cursor-pointer">
-              <img src={Add} alt="heart_icon" className="w-[16px] h-[16px]" />
+              <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
               <p className="text-[12px]">Like</p>
             </button>
           </div>

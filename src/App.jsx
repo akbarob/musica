@@ -9,28 +9,51 @@ import { Collection } from "./pages/Collection";
 import Search from "./pages/Search";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import Liked from "./components/Liked";
+import MyCollection from "./components/MyCollection";
 
 function App() {
   console.log("akbdmus opemipos");
-  const [Collectionsongs, setCollectionsongs] = useState([]);
+  const [collectionSongs, setCollectionsongs] = useState([]);
+  const [liked, setLiked] = useState([]);
 
   const saveToLocalStorage = (items) => {
-    localStorage.setItem("musica", JSON.stringify(items));
+    localStorage.setItem("musica-collection", JSON.stringify(items));
   };
+  const saveToLikedLocalStorage = (items) => {
+    localStorage.setItem("musica-liked", JSON.stringify(items));
+  };
+  // const AddToCollection = (song) => {
+  //   const newCollection = [...Collectionsongs, song];
+  //   // setCollectionsongs(newCollection);
+  //   // saveToLocalStorage(newCollection);
+  //   console.log("ADD_TO_COLLECTIONS");
+  // };
   const AddToCollection = (song) => {
-    const newCollection = [...Collectionsongs, song];
+    const newCollection = [...collectionSongs, song];
     setCollectionsongs(newCollection);
     saveToLocalStorage(newCollection);
-    console.log(newCollection);
+    console.log(collectionSongs);
   };
-
   const removeFromCollection = (song) => {
-    const newCollection = Collectionsongs.filter(
+    const newCollection = collectionSongs.filter(
       (songID) => songID.key !== song.key
     );
     setCollectionsongs(newCollection);
     saveToLocalStorage(newCollection);
     console.log("removed song:");
+  };
+  const AddToLiked = (song) => {
+    const newCollection = [...liked, song];
+    setLiked(newCollection);
+    saveToLikedLocalStorage(newCollection);
+    console.log(liked);
+  };
+  const removeFromLiked = (song) => {
+    const newCollection = liked.filter((songID) => songID.key !== song.key);
+    setLiked(newCollection);
+    saveToLikedLocalStorage(newCollection);
+    console.log("removed liked:");
   };
   useEffect(() => {
     const songsCollection = JSON.parse(localStorage.getItem("musica"));
@@ -43,16 +66,17 @@ function App() {
         <Searchbar />
         <AnimatePresence>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="home" element={<Home />} />
-
+            <Route path="/*" element={<Home />} />
             <Route path="ViewChartOrAlbum" element={<ViewChartOrAlbum />} />
             <Route
               path="song/:songid"
               element={
                 <ViewChartOrAlbum
                   AddToCollection={AddToCollection}
-                  Collectionsongs={Collectionsongs}
+                  removeFromCollection={removeFromCollection}
+                  AddToLiked={AddToLiked}
+                  removeFromLIked={removeFromLiked}
+                  collectionsongs={collectionSongs}
                 />
               }
             />
@@ -60,11 +84,14 @@ function App() {
               path="collections"
               element={
                 <Collection
-                  Collectionsongs={Collectionsongs}
+                  collectionsongs={collectionSongs}
+                  liked={liked}
                   removeFromCollection={removeFromCollection}
+                  removeFromLIked={removeFromLiked}
                 />
               }
             />
+
             <Route path="search/:search" element={<Search />} />
           </Routes>
         </AnimatePresence>

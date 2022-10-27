@@ -12,7 +12,7 @@ import {
 // import { HiUser } from "react-icons/hi";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 {
   ({ isActive }) => (isActive ? activeClassName : undefined);
 }
@@ -20,7 +20,7 @@ import { NavLink } from "react-router-dom";
 const links = [
   { name: "Home", to: "/home", icon: Home },
 
-  { name: "Library", to: "Collections", icon: Playlist },
+  { name: "Library", to: "collections", icon: Playlist },
   { name: "Radio", to: "//", icon: Radio },
   { name: "Video", to: "//", icon: Videos },
 ];
@@ -30,7 +30,7 @@ const user = [
 ];
 const mobilelinks = [
   { name: "Home", to: "home", icon: Home },
-  { name: "Library", to: "Collections", icon: Playlist },
+  { name: "Library", to: "collections", icon: Playlist },
   { name: "Radio", to: "//", icon: Radio },
   { name: "Video", to: "//", icon: Videos },
   { name: "Profile", to: "//", icon: Profile },
@@ -48,9 +48,11 @@ export default function Sidebar() {
   return (
     <div className="">
       <div className=" absolute hidden md:flex flex-col py-10 h-screen z-30 px-4 backdrop-blur-xs pr-5">
-        <div className="justify-center">
-          <img src={logo} alt="musica_logo" />
-        </div>
+        <Link to={`/home`}>
+          <div className="justify-center cursor-pointer">
+            <img src={logo} alt="musica_logo" />
+          </div>
+        </Link>
         <div className="bg-[#1A1E1F]  rounded-[32px] mt-10 h-[230px] w-[52px] flex flex-col justify-evenly items-center">
           {links.map((item) => (
             <NavLink

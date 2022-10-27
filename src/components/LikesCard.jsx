@@ -5,7 +5,7 @@ import { PlayPause } from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/feature/playerSlice";
 import { useDispatch } from "react-redux";
 
-export default function Songbar({ song, i, isPlaying, activeSong, data }) {
+export default function LikesCard({ song, i, isPlaying, activeSong, data }) {
   const dispatch = useDispatch();
   const audioRef = useRef(null);
   const [duration, setDuration] = useState(0);

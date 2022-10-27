@@ -8,7 +8,7 @@ export const api = createApi({
     prepareHeaders: (headers) => {
       headers.set(
         "X-RapidAPI-Key",
-        "1d94da288amsh002d0f0eab872f1p1a9712jsn906d5d9188f0"
+        import.meta.env.VITE_SHAZAM_CORE_RAPID_API_KEY
       );
       return headers;
     },

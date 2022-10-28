@@ -51,16 +51,19 @@ function App() {
     saveToLikedLocalStorage(newCollection);
     console.log("removed liked:");
   };
-  // useEffect(() => {
-  //   const songsCollection = JSON.parse(
-  //     localStorage.getItem("musica-collection")
-  //   );
-  //   setCollectionsongs(songsCollection);
+  useEffect(() => {
+    if (localStorage.getItem("musica-collection") !== "undefined") {
+      const songsCollection = JSON.parse(
+        localStorage.getItem("musica-collection")
+      );
+      setCollectionsongs(songsCollection);
+    }
 
-  //   const likedSongs = JSON.parse(localStorage.getItem("musica-liked"));
-
-  //   setLiked(likedSongs);
-  // }, []);
+    if (localStorage.getItem("musica-liked") !== "undefined") {
+      const likedSongs = JSON.parse(localStorage.getItem("musica-liked"));
+      setLiked(likedSongs);
+    }
+  }, []);
   return (
     <div className="flex flex-row h-screen font-quicksand relative">
       <Sidebar />

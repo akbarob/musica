@@ -64,7 +64,7 @@ export const ViewChartOrAlbum = ({
               />
               <p className="text-[12px]">Play all</p>
             </button>
-            {collectionsongs.filter((song) => song.key === songid)[0] ? (
+            {collectionsongs?.filter((song) => song.key === songid)[0] ? (
               <button
                 className="h-[36px] w-[151px] flex backdrop-blur-lg bg-white/10 "
                 onClick={() => removeFromCollection(songData)}

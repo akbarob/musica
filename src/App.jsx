@@ -52,22 +52,22 @@ function App() {
     console.log("removed liked:");
   };
   useEffect(() => {
-    console.log(localStorage.getItem("musica-collection"));
-    if (localStorage.getItem("musica-collection") === []) {
+    console.log("localstorage:", localStorage.getItem("musica-collection"));
+    if (localStorage.getItem("musica-collection") !== undefined) {
       console.log("wont rand");
+    } else {
       const songsCollection = JSON.parse(
         localStorage.getItem("musica-collection")
       );
       setCollectionsongs(songsCollection);
-    } else {
       console.log("run");
     }
 
-    if (localStorage.getItem("musica-liked") === []) {
-      const likedSongs = JSON.parse(localStorage.getItem("musica-liked"));
-      setLiked(likedSongs);
+    if (localStorage.getItem("musica-liked") !== undefined) {
     } else {
       console.log("run too");
+      const likedSongs = JSON.parse(localStorage.getItem("musica-liked"));
+      setLiked(likedSongs);
     }
   }, []);
   return (

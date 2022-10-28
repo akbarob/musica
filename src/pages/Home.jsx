@@ -52,7 +52,7 @@ export const Home = ({ AddToLiked, liked, removeFromLiked }) => {
         />
       </div>
       <div className="pl-6">
-        <div className=" mt-[43px] flex flex-col ">
+        <div className="mt-[30px] md:mt-[43px] flex flex-col ">
           <p className="text-2xl font-bold text-[#EFEEE0] mb-[13px]">
             New releases
           </p>

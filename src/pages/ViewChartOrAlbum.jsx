@@ -143,6 +143,9 @@ export const ViewChartOrAlbum = ({
             data={RelatedSongs}
             activeSong={activeSong}
             isPlaying={isPlaying}
+            AddToLiked={AddToLiked}
+            removeFromLiked={removeFromLiked}
+            liked={liked}
           />
         ))}
       </div>

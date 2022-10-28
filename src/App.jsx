@@ -53,7 +53,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-row h-screen font-quicksand relative">
+    <div className="flex flex-row h-screen font-quicksand relative my-auto">
       <Sidebar />
       <div className="flex flex-col bg-[#1E1E1E] w-full pb-24">
         <Searchbar />
@@ -99,7 +99,7 @@ function App() {
           </Routes>
         </AnimatePresence>
       </div>
-      <div className="absolute h-[100px] bottom-0 left-0 right-0 flex animate-slideup bg-transparent backdrop-blur-lg z-50 border-t-2 border-white/20">
+      <div className="absolute h-[70px] md:h-[100px] bottom-0 left-0 right-0 flex animate-slideup bg-transparent backdrop-blur-lg z-50 border-t-2 border-white/20">
         <MusicPlayer />
       </div>
     </div>

@@ -4,7 +4,16 @@ import { PlayPause } from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/feature/playerSlice";
 import { useDispatch } from "react-redux";
 
-export const LongSongbar = ({ song, i, isPlaying, activeSong, data }) => {
+export const LongSongbar = ({
+  song,
+  i,
+  isPlaying,
+  activeSong,
+  data,
+  AddToLiked,
+  removeFromLiked,
+  liked,
+}) => {
   const dispatch = useDispatch();
   const audioRef = useRef(null);
   const [duration, setDuration] = useState(0);
@@ -19,6 +28,7 @@ export const LongSongbar = ({ song, i, isPlaying, activeSong, data }) => {
     dispatch(playPause(true));
     dispatch(setActiveSong({ song, data, i }));
   };
+  const songId = song.key;
 
   return (
     <div className="relative flex flex-row bg-[#1A1E1F]/50 backdrop-blur-sm h-[56px] w-full rounded-[20px] items-center p-4 mx-auto mb-[10px]">
@@ -44,7 +54,17 @@ export const LongSongbar = ({ song, i, isPlaying, activeSong, data }) => {
         />
       </div>
       <button className=" ml-[20.13px]">
-        <Heart className="w-[16px] h-[14px] max-w-none stroke-[#EFEEE0]" />
+        {liked?.filter((song) => song.key === songId)[0] ? (
+          <Heart
+            className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black"
+            onClick={() => removeFromLiked(song)}
+          />
+        ) : (
+          <Heart
+            className="w-[16px] h-[14px] max-w-none  stroke-[#EFEEE0]"
+            onClick={() => AddToLiked(song)}
+          />
+        )}{" "}
       </button>
       <div className="flex items-center justify-between py-6 w-full mx-4 lg:mx-8">
         <div className="flex flex-col lg:flex-row items-start">
@@ -72,7 +92,7 @@ export const LongSongbar = ({ song, i, isPlaying, activeSong, data }) => {
           <button className="order-first lg:order-last lg:ml-44 mt-2 lg:mt-0">
             <img
               src={More}
-              alt="heart_icon"
+              alt="more_icon"
               className="w-[15.83px] h-[13.5px]"
             />
           </button>

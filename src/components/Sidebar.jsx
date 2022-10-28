@@ -95,14 +95,14 @@ export default function Sidebar() {
       {MobileOpen ? (
         <div className="absolute md:hidden bg-[#1A1E1F] z-50 w-2/3 h-screen pt-6 animate-slide-in">
           <HiOutlineMenuAlt4
-            className="w-6 h-6 text-white mr-2 cursor-pointer ml-3"
+            className="w-6 h-6 text-white mr-2 cursor-pointer ml-3 shadow-lg"
             onClick={() => setMobileOpen(!MobileOpen)}
           />
           {mobilelinks.map((item) => (
             <NavLink
               key={item.name}
               to={item.to}
-              className="flex pl-8 text-white hover:text-[#FACD66] hover:fill-[#FACD66] my-8 items-center"
+              className="flex pl-8 text-white hover:text-[#FACD66] hover:fill-[#FACD66] my-10 items-center"
               onClick={() => setMobileOpen(!MobileOpen)}
             >
               <item.icon className="fill-[#EFEEE0]/25  hover:fill-inherit" />

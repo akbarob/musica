@@ -93,7 +93,7 @@ export default function Sidebar() {
       </div>
       {/* mobileMenu */}
       {MobileOpen ? (
-        <div className="absolute md:hidden bg-[#1A1E1F] z-50 w-2/3 h-screen pt-6">
+        <div className="absolute md:hidden bg-[#1A1E1F] z-50 w-2/3 h-screen pt-6 animate-slide-in">
           <HiOutlineMenuAlt4
             className="w-6 h-6 text-white mr-2 cursor-pointer ml-3"
             onClick={() => setMobileOpen(!MobileOpen)}
@@ -102,15 +102,11 @@ export default function Sidebar() {
             <NavLink
               key={item.name}
               to={item.to}
-              className="flex flex-col my-12 items-start"
+              className="flex pl-8 text-white hover:text-[#FACD66] hover:fill-[#FACD66] my-8 items-center"
+              onClick={() => setMobileOpen(!MobileOpen)}
             >
-              <div
-                className="flex pl-8 text-white hover:text-[#FACD66] "
-                onClick={() => setMobileOpen(!MobileOpen)}
-              >
-                <item.icon className="fill-[#EFEEE0]/25 hover:fill-[#FACD66]" />
-                <p className="text-lg  ml-4">{item.name}</p>
-              </div>
+              <item.icon className="fill-[#EFEEE0]/25  hover:fill-inherit" />
+              <p className="text-lg  ml-4">{item.name}</p>
             </NavLink>
           ))}{" "}
         </div>

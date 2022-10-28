@@ -3,6 +3,7 @@ import { Heart, More } from "../assets";
 import { PlayPause } from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/feature/playerSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const LongSongbar = ({
   song,
@@ -15,6 +16,7 @@ export const LongSongbar = ({
   liked,
 }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const audioRef = useRef(null);
   const [duration, setDuration] = useState(0);
   // converts the time to format 0:00

@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 //framermotion
 import { motion } from "framer-motion";
 // import { data } from "../songs";
+import { countries } from "../assets/data";
 
 export const Home = ({ AddToLiked, liked, removeFromLiked }) => {
   const { data, isFetching, error } = useGetWorldChartQuery();
@@ -24,15 +25,6 @@ export const Home = ({ AddToLiked, liked, removeFromLiked }) => {
 
   const [country, setCountry] = useState();
   const [loading, setLoading] = useState();
-  useEffect(() => {
-    fetch(
-      "https://geo.ipify.org/api/v2/country?apiKey=at_5Wv0Pzx0WiS7ALIJ9TNo0wI8XTmLb"
-    )
-      .then((response) => response.json())
-      .then((data) => setCountry(data.location.country))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-  }, [country]);
   const { data: bycountry } = useGetSongsByCountryQuery(country);
   // const locationSongs = data?.slice(0, 15)
   const locationSongs = bycountry?.slice(0, 15);
@@ -42,6 +34,10 @@ export const Home = ({ AddToLiked, liked, removeFromLiked }) => {
   //   console.log(topCharts);
   if (isFetching) return <Loader title="Loading Songs Around You" />;
   if (error) return <Error />;
+
+  useEffect(() => {
+    setCountry("US");
+  });
   return (
     <motion.div
       className="flex flex-col w-full overflow-y-auto hide-scrollbar md:pl-20 mt-20 pr-4"
@@ -78,7 +74,22 @@ export const Home = ({ AddToLiked, liked, removeFromLiked }) => {
         </div>
         <div className="flex flex-col">
           <p className="text-2xl font-bold text-[#EFEEE0] mb-[13px]">
-            Popular in your area : ({country})
+            Popular in your area :{" "}
+            <select
+              onChange={(e) => setCountry(e.target.value)}
+              className=" bg-[#1E1E1E] outline-none  text-sm border-2 border-[#ffffff]/50 p-2 rounded-md cursor-pointer "
+            >
+              {countries.map((loc) => {
+                return (
+                  <option
+                    className="text-sm border-0 outline-none capitalize bg-[#1E1E1E] text-white "
+                    value={loc.value}
+                  >
+                    {loc.name}
+                  </option>
+                );
+              })}{" "}
+            </select>
           </p>
           <div className="flex flex-nowrap space-x-[30px] overflow-x-auto w-full h-full hide-scrollbar">
             {locationSongs?.map((song, i) => (

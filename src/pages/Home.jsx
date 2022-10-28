@@ -79,6 +79,7 @@ export const Home = ({ AddToLiked, liked, removeFromLiked }) => {
               {countries.map((loc) => {
                 return (
                   <option
+                    key={loc.name}
                     className="text-sm border-0 outline-none capitalize bg-[#1E1E1E] text-white "
                     value={loc.value}
                   >

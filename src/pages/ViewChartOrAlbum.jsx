@@ -20,6 +20,7 @@ export const ViewChartOrAlbum = ({
   liked,
 }) => {
   const { songid } = useParams();
+
   console.log("collections:", collectionsongs);
   console.log(songid);
   const { activeSong, isPlaying } = useSelector((state) => state.player);
@@ -29,8 +30,9 @@ export const ViewChartOrAlbum = ({
 
   const RelatedSongs = RelatedData?.slice(0, 10);
   console.log(RelatedSongs);
-
-  //   console.log(songData);
+  // console.log(songData);
+  // const songId = songData.key;
+  console.log(songData);
 
   //   console.log(songid);
   if (isFetching)
@@ -64,7 +66,7 @@ export const ViewChartOrAlbum = ({
               />
               <p className="text-[12px]">Play all</p>
             </button>
-            {collectionsongs?.filter((song) => song.key === songid)[0] ? (
+            {collectionsongs?.filter((song) => song.key === songData.key)[0] ? (
               <button
                 className="h-[36px] w-[151px] flex backdrop-blur-lg bg-white/10 "
                 onClick={() => removeFromCollection(songData)}
@@ -81,13 +83,22 @@ export const ViewChartOrAlbum = ({
                 <p className="text-[12px]">Add to collection</p>
               </button>
             )}
-            <button
-              className="hidden h-[36px] w-[36px] sm:flex backdrop-blur-lg bg-white/10 "
-              onClick={() => AddToLiked(songData)}
-            >
-              <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
-            </button>
-            {liked?.filter((song) => song.key === songid)[0] ? (
+            {liked?.filter((song) => song.key === songData.key)[0] ? (
+              <button
+                className="hidden h-[36px] w-[36px] sm:flex backdrop-blur-lg bg-white/10 "
+                onClick={() => removeFromLiked(songData)}
+              >
+                <Heart className="w-[16px] h-[14px] max-w-none  stroke-[#EFEEE0]" />
+              </button>
+            ) : (
+              <button
+                className="hidden h-[36px] w-[36px] sm:flex backdrop-blur-lg bg-white/10 "
+                onClick={() => AddToLiked(songData)}
+              >
+                <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
+              </button>
+            )}
+            {liked?.filter((song) => song.key === songData.key)[0] ? (
               <button
                 className="sm:hidden h-[36px] w-[90px] flex backdrop-blur-lg bg-white/10 hover:bg-[#FACD66]/20  rounded-[20px] items-center justify-evenly cursor-pointer"
                 onClick={() => removeFromLiked(songData)}

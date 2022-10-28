@@ -15,8 +15,8 @@ import MyCollection from "./components/MyCollection";
 function App() {
   const [collectionSongs, setCollectionsongs] = useState([]);
   const [liked, setLiked] = useState([]);
-  console.log("liked:", liked.length);
-  console.log("collectionsongs:", collectionSongs.length);
+  console.log("liked:", liked?.length);
+  console.log("collectionsongs:", collectionSongs?.length);
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("musica-collection", JSON.stringify(items));
@@ -24,12 +24,7 @@ function App() {
   const saveToLikedLocalStorage = (items) => {
     localStorage.setItem("musica-liked", JSON.stringify(items));
   };
-  // const AddToCollection = (song) => {
-  //   const newCollection = [...Collectionsongs, song];
-  //   // setCollectionsongs(newCollection);
-  //   // saveToLocalStorage(newCollection);
-  //   console.log("ADD_TO_COLLECTIONS");
-  // };
+
   const AddToCollection = (song) => {
     const newCollection = [...collectionSongs, song];
     setCollectionsongs(newCollection);

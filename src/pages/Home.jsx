@@ -23,7 +23,7 @@ export const Home = ({ AddToLiked, liked, removeFromLiked }) => {
   const topCharts = data?.slice(0, 3);
   const newRelease = data?.slice(0, 15);
 
-  const [country, setCountry] = useState();
+  const [country, setCountry] = useState("NG");
   const [loading, setLoading] = useState();
   const { data: bycountry } = useGetSongsByCountryQuery(country);
   // const locationSongs = data?.slice(0, 15)
@@ -35,9 +35,6 @@ export const Home = ({ AddToLiked, liked, removeFromLiked }) => {
   if (isFetching) return <Loader title="Loading Songs Around You" />;
   if (error) return <Error />;
 
-  useEffect(() => {
-    setCountry("US");
-  });
   return (
     <motion.div
       className="flex flex-col w-full overflow-y-auto hide-scrollbar md:pl-20 mt-20 pr-4"

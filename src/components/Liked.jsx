@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Liked = ({ liked, removeFromLiked }) => {
   const data = liked;
-  console.log(data);
+  console.log("liked length:", data?.length);
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   return (

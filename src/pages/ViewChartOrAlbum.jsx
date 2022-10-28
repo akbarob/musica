@@ -79,7 +79,7 @@ export const ViewChartOrAlbum = ({
                 className="h-[36px] w-[151px] flex backdrop-blur-lg bg-white/10 "
                 onClick={() => AddToCollection(songData)}
               >
-                <img src={Add} alt="heart_icon" className="w-[16px] h-[16px]" />
+                <img src={Add} alt="music_icon" className="w-[16px] h-[16px]" />
                 <p className="text-[12px]">Add to collection</p>
               </button>
             )}
@@ -88,14 +88,15 @@ export const ViewChartOrAlbum = ({
                 className="hidden h-[36px] w-[36px] sm:flex backdrop-blur-lg bg-white/10 "
                 onClick={() => removeFromLiked(songData)}
               >
-                <Heart className="w-[16px] h-[14px] max-w-none  stroke-[#EFEEE0]" />
+                {" "}
+                <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
               </button>
             ) : (
               <button
                 className="hidden h-[36px] w-[36px] sm:flex backdrop-blur-lg bg-white/10 "
                 onClick={() => AddToLiked(songData)}
               >
-                <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
+                <Heart className="w-[16px] h-[14px] max-w-none  stroke-[#EFEEE0]" />
               </button>
             )}
             {liked?.filter((song) => song.key === songData.key)[0] ? (
@@ -103,7 +104,8 @@ export const ViewChartOrAlbum = ({
                 className="sm:hidden h-[36px] w-[90px] flex backdrop-blur-lg bg-white/10 hover:bg-[#FACD66]/20  rounded-[20px] items-center justify-evenly cursor-pointer"
                 onClick={() => removeFromLiked(songData)}
               >
-                <Heart className="w-[16px] h-[14px] max-w-none  stroke-[#EFEEE0]" />
+                {" "}
+                <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
                 <p className="text-[12px]">Like</p>
               </button>
             ) : (
@@ -111,7 +113,7 @@ export const ViewChartOrAlbum = ({
                 className="sm:hidden h-[36px] w-[90px] flex backdrop-blur-lg bg-white/10 hover:bg-[#FACD66]/20  rounded-[20px] items-center justify-evenly cursor-pointer"
                 onClick={() => AddToLiked(songData)}
               >
-                <Heart className="w-[16px] h-[14px] max-w-none fill-[#E5524A] stroke-black" />
+                <Heart className="w-[16px] h-[14px] max-w-none  stroke-[#EFEEE0]" />
                 <p className="text-[12px]">Like</p>
               </button>
             )}

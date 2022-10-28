@@ -13,8 +13,8 @@ import Liked from "./components/Liked";
 import MyCollection from "./components/MyCollection";
 
 function App() {
-  const [collectionSongs, setCollectionsongs] = useState([]);
-  const [liked, setLiked] = useState([]);
+  const [collectionSongs, setCollectionsongs] = useState([0]);
+  const [liked, setLiked] = useState([0]);
   console.log("liked:", liked?.length);
   console.log("collectionsongs:", collectionSongs?.length);
 

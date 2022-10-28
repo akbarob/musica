@@ -69,7 +69,10 @@ export const LongSongbar = ({
       <div className="flex items-center justify-between py-6 w-full mx-4 lg:mx-8">
         <div className="flex flex-col lg:flex-row items-start">
           <div className="w-48 lg:w-[350px] mt-2 lg:mt-0">
-            <p className="text-xs text-[#ffffff]/50 truncate">
+            <p
+              className="text-xs text-[#ffffff]/50 truncate cursor-pointer"
+              onClick={() => navigate(`/song/${song?.key}`)}
+            >
               {song ? song?.title : "Let me love you ~ Krisx"} -{" "}
               {song ? song?.subtitle : "Single"}
             </p>

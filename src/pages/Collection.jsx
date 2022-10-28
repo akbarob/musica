@@ -79,7 +79,7 @@ export const Collection = ({
           )}
           {likes && (
             <Route
-              path="/"
+              path="/*"
               element={
                 <Liked liked={liked} removeFromLiked={removeFromLiked} />
               }

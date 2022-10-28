@@ -13,9 +13,10 @@ import Liked from "./components/Liked";
 import MyCollection from "./components/MyCollection";
 
 function App() {
-  const [collectionSongs, setCollectionsongs] = useState([]);
-  const [liked, setLiked] = useState([]);
+  const [collectionSongs, setCollectionsongs] = useState(null);
+  const [liked, setLiked] = useState(null);
   console.log("liked:", liked);
+  console.log("collectionsongs:", collectionSongs);
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("musica-collection", JSON.stringify(items));
@@ -97,7 +98,7 @@ function App() {
               }
             />
             <Route
-              path="collections"
+              path="collections/*"
               element={
                 <Collection
                   collectionsongs={collectionSongs}

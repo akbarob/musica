@@ -13,8 +13,8 @@ import Liked from "./components/Liked";
 import MyCollection from "./components/MyCollection";
 
 function App() {
-  const [collectionSongs, setCollectionsongs] = useState([0]);
-  const [liked, setLiked] = useState([0]);
+  const [collectionSongs, setCollectionsongs] = useState([]);
+  const [liked, setLiked] = useState([]);
   console.log("liked:", liked?.length);
   console.log("collectionsongs:", collectionSongs?.length);
 
@@ -51,16 +51,16 @@ function App() {
     saveToLikedLocalStorage(newCollection);
     console.log("removed liked:");
   };
-  useEffect(() => {
-    const songsCollection = JSON.parse(
-      localStorage.getItem("musica-collection")
-    );
-    setCollectionsongs(songsCollection);
+  // useEffect(() => {
+  //   const songsCollection = JSON.parse(
+  //     localStorage.getItem("musica-collection")
+  //   );
+  //   setCollectionsongs(songsCollection);
 
-    const likedSongs = JSON.parse(localStorage.getItem("musica-liked"));
+  //   const likedSongs = JSON.parse(localStorage.getItem("musica-liked"));
 
-    setLiked(likedSongs);
-  }, []);
+  //   setLiked(likedSongs);
+  // }, []);
   return (
     <div className="flex flex-row h-screen font-quicksand relative">
       <Sidebar />
